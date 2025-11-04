@@ -1,5 +1,7 @@
 import React from "react";
 import "./Home.css";
+import { Link } from "react-router-dom";
+
 
 const Home = () => {
   return (
@@ -13,7 +15,7 @@ const Home = () => {
           <p className="lead mt-3">
             EventAra turns your dreams into breathtaking celebrations — elegant, emotional, and unforgettable.
           </p>
-          <a href="#work" className="btn btn-outline-light btn-lg mt-4">Explore Our Work</a>
+          <Link to={"/works"}><button className="btn btn-outline-light btn-lg mt-4">Explore Our Work</button></Link>
         </div>
       </section>
 
