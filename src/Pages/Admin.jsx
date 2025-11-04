@@ -10,11 +10,17 @@ import {
 } from "@mui/material";
 import { FaEnvelope, FaCalendarAlt, FaClipboardList } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { getAllBookingsAPI, deleteBookingAPI } from "../service/allAPI"; // ✅ both APIs
+import {
+  getAllBookingsAPI,
+  deleteBookingAPI,
+  getAllMessagesAPI,
+  deleteMessageAPI,
+} from "../service/allAPI"; // ✅ import message API
 
 function Admin() {
   const [view, setView] = useState("home");
   const [bookings, setBookings] = useState([]);
+  const [messages, setMessages] = useState([]); // ✅ for contact messages
   const [newEvent, setNewEvent] = useState({ name: "", date: "", image: "" });
 
   // ✅ Fetch all bookings
@@ -26,6 +32,18 @@ function Admin() {
       }
     } catch (err) {
       console.error("Error fetching bookings:", err);
+    }
+  };
+
+  // ✅ Fetch all messages
+  const getAllMessages = async () => {
+    try {
+      const result = await getAllMessagesAPI();
+      if (result.status >= 200 && result.status < 300) {
+        setMessages(result.data);
+      }
+    } catch (err) {
+      console.error("Error fetching messages:", err);
     }
   };
 
@@ -54,10 +72,38 @@ function Admin() {
     });
   };
 
-  // Fetch bookings only when Bookings view is active
+  const handleDeleteMessage = async (id) => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "This message will be permanently deleted.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const res = await deleteMessageAPI(id);
+        if (res.status >= 200 && res.status < 300) {
+          Swal.fire("Deleted!", "Message has been deleted.", "success");
+          getAllMessages(); // refresh after delete
+        }
+      } catch (error) {
+        Swal.fire("Error", "Failed to delete message.", "error");
+        console.error(error);
+      }
+    }
+  });
+};
+
+
+  // ✅ Load data based on view
   useEffect(() => {
     if (view === "bookings") {
       getAllBookings();
+    } else if (view === "messages") {
+      getAllMessages();
     }
   }, [view]);
 
@@ -87,7 +133,7 @@ function Admin() {
         ADMIN DASHBOARD
       </Typography>
 
-      {/* HOME */}
+      {/* ===================== HOME ===================== */}
       {view === "home" && (
         <Box sx={{ mt: 5, px: 2 }}>
           <Grid container spacing={4} justifyContent="center">
@@ -166,81 +212,146 @@ function Admin() {
         </Box>
       )}
 
-      {/* BOOKINGS SECTION */}
+      {/* ===================== BOOKINGS SECTION ===================== */}
       {view === "bookings" && (
-       <Box>
-  <Button variant="contained" sx={{ mb: 3 }} onClick={() => setView("home")}>
-    ← Back
-  </Button>
-  <Typography variant="h4" textAlign="center" fontWeight="bold" mb={3}>
-    All Bookings
-  </Typography>
+        <Box>
+          <Button
+            variant="contained"
+            sx={{ mb: 3 }}
+            onClick={() => setView("home")}
+          >
+            ← Back
+          </Button>
+          <Typography variant="h4" textAlign="center" fontWeight="bold" mb={3}>
+            All Bookings
+          </Typography>
 
-  {bookings.length === 0 ? (
-    <Typography textAlign="center">No bookings found.</Typography>
-  ) : (
-    bookings.map((booking) => (
-      <Card
-        key={booking.id}
-        sx={{
-          mb: 2,
-          p: 2,
-          border: "2px solid #4842edff",
-          borderRadius: "20px",
-        }}
-      >
-        <CardContent>
-          <Typography variant="h6">{booking.name}</Typography>
-          <Typography>Email: {booking.email}</Typography>
-          <Typography>Phone: {booking.phone}</Typography>
-          <Typography>Event: {booking.event}</Typography>
-          <Typography>Date: {booking.date}</Typography>
-          <Typography>Venue: {booking.venue}</Typography>
-          <Typography>Requirements: {booking.requirements}</Typography>
+          {bookings.length === 0 ? (
+            <Typography textAlign="center">No bookings found.</Typography>
+          ) : (
+            bookings.map((booking) => (
+              <Card
+                key={booking.id}
+                sx={{
+                  mb: 2,
+                  p: 2,
+                  border: "2px solid #4842edff",
+                  borderRadius: "20px",
+                }}
+              >
+                <CardContent>
+                  <Typography variant="h6">{booking.name}</Typography>
+                  <Typography>Email: {booking.email}</Typography>
+                  <Typography>Phone: {booking.phone}</Typography>
+                  <Typography>Event: {booking.event}</Typography>
+                  <Typography>Date: {booking.date}</Typography>
+                  <Typography>Venue: {booking.venue}</Typography>
+                  <Typography>Requirements: {booking.requirements}</Typography>
 
-          {/* ✅ Confirm Button aligned to right */}
+                  {/* ✅ Confirm Button aligned to right */}
+                  <Box
+                    sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}
+                  >
+                    <Button
+                      variant="contained"
+                      color="success"
+                      onClick={() => handleConfirmBooking(booking.id)}
+                    >
+                      Confirm Booking
+                    </Button>
+                  </Box>
+                </CardContent>
+              </Card>
+            ))
+          )}
+        </Box>
+      )}
+
+      {/* ===================== MESSAGES SECTION ===================== */}
+{view === "messages" && (
+  <Box>
+    <Button
+      variant="contained"
+      sx={{ mb: 3 }}
+      onClick={() => setView("home")}
+    >
+      ← Back
+    </Button>
+    <Typography variant="h4" textAlign="center" fontWeight="bold" mb={3}>
+      User Messages
+    </Typography>
+
+    {messages.length === 0 ? (
+      <Typography textAlign="center">No messages found.</Typography>
+    ) : (
+      messages.map((msg) => (
+        <Box
+          key={msg.id}
+          sx={{
+            mb: 2,
+            p: 2,
+            border: "2px solid #2620efff",
+            borderRadius: "20px",
+          }}
+        >
+          <Typography variant="h6">{msg.name}</Typography>
+          <Typography>Email: {msg.email}</Typography>
+          <Typography>Message: {msg.message}</Typography>
+
+          {/* ✅ Delete Button */}
           <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
             <Button
               variant="contained"
-              color="success"
-              onClick={() => handleConfirmBooking(booking.id)}
+              color="error"
+              onClick={() => handleDeleteMessage(msg.id)}
             >
-              Confirm Booking
+              Delete Message
             </Button>
           </Box>
-        </CardContent>
-      </Card>
-    ))
-  )}
-</Box>
+        </Box>
+      ))
+    )}
+  </Box>
+)}
 
-      )}
 
-      {/* EVENTS SECTION */}
+      {/* ===================== EVENTS SECTION ===================== */}
       {view === "events" && (
         <Box>
-          <Button variant="contained" sx={{ mb: 3 }} onClick={() => setView("home")}>
+          <Button
+            variant="contained"
+            sx={{ mb: 3 }}
+            onClick={() => setView("home")}
+          >
             ← Back
           </Button>
           <Typography variant="h4" textAlign="center" fontWeight="bold" mb={5}>
             Add New Event
           </Typography>
 
-          <Box sx={{ display: "flex", justifyContent: "center", mb: 3, gap: 2 }}>
+          <Box
+            sx={{ display: "flex", justifyContent: "center", mb: 3, gap: 2 }}
+          >
             <TextField
               label="Event Name"
               value={newEvent.name}
-              onChange={(e) => setNewEvent({ ...newEvent, name: e.target.value })}
+              onChange={(e) =>
+                setNewEvent({ ...newEvent, name: e.target.value })
+              }
             />
             <TextField
               label="Date"
               value={newEvent.date}
-              onChange={(e) => setNewEvent({ ...newEvent, date: e.target.value })}
+              onChange={(e) =>
+                setNewEvent({ ...newEvent, date: e.target.value })
+              }
             />
             <TextField
               label="Image URL"
               value={newEvent.image}
-              onChange={(e) => setNewEvent({ ...newEvent, image: e.target.value })}
+              onChange={(e) =>
+                setNewEvent({ ...newEvent, image: e.target.value })
+              }
             />
             <Button variant="contained">Add Event</Button>
           </Box>
@@ -248,7 +359,9 @@ function Admin() {
           <Grid container spacing={3} justifyContent="center">
             {events.map((e) => (
               <Grid item xs={12} sm={6} md={4} key={e.id}>
-                <Card sx={{ p: 2, border: "1px solid #ddd", borderRadius: "15px" }}>
+                <Card
+                  sx={{ p: 2, border: "1px solid #ddd", borderRadius: "15px" }}
+                >
                   <Typography variant="h6">{e.name}</Typography>
                   <Typography>Date: {e.date}</Typography>
                   <img
