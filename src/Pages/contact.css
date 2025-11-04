@@ -16,7 +16,7 @@
 .title {
   text-align: center;
   font-size: 36px;
-  color: #c45a2b;
+  color: rgb(36, 36, 224);
   margin-bottom: 10px;
 }
 
@@ -85,11 +85,11 @@
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #c45a2b;
+  border-color: rgb(36, 36, 224);
 }
 
 .contact-form button {
-  background-color: #c45a2b;
+  background-color: rgb(36, 36, 224);
   color: white;
   border: none;
   padding: 14px;
