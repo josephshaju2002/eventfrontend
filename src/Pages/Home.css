@@ -1,0 +1,166 @@
+.home-page {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("https://images.unsplash.com/photo-1511578314322-379afb476865") center/cover no-repeat;
+  height: 100vh;
+}
+.hero-btn {
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.hero-btn:hover {
+  background: #f8d210;
+  color: #000;
+}
+
+/* About Section */
+.about-section img {
+  border-radius: 15px;
+}
+
+/* Services Section */
+.service-card img {
+  height: 250px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.service-card {
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Gallery */
+.gallery-img {
+  transition: transform 0.3s ease;
+}
+.gallery-img:hover {
+  transform: scale(1.05);
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(120deg, #000000, #4a148c);
+}
+.reviews-section {
+  background-color: #181616; /* You can change this if you want */
+  color: #f8d210; /* ✨ Change this color for review text */
+}
+
+.review-card {
+  background-color: rgba(70, 22, 142, 0.05);
+  border-radius: 10px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-8px);
+  background-color: rgba(90, 89, 89, 0.15);
+}
+
+.review-text {
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #5a5a58; /* Change this for review text inside each card */
+}
+/* --- Our Works Section --- */
+.work-section {
+  background-color: #000; /* keeps it elegant dark */
+  color: #f8d210; /* ✨ golden yellow text */
+}
+
+.work-section h2 {
+  color: #ffd700; /* bright gold for title */
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+}
+
+.work-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.3); /* soft gold border */
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+}
+
+.work-card .card-title {
+  color: #ffdf00; /* gold title */
+  font-weight: 600;
+}
+
+.work-card .card-text {
+  color: #fffacd; /* soft cream text */
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+/* --- Our Works Section --- */
+.work-section {
+  background: linear-gradient(135deg, #000000, #1a1a1a 70%, #332800);
+  color: #f8d210;
+  position: relative;
+}
+
+.work-section h2 {
+  color: #ffd700;
+  font-size: 2.5rem;
+}
+
+.work-section .subtitle {
+  color: #fff8dc;
+  font-style: italic;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+/* Work cards */
+.work-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 15px;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+}
+
+.work-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.work-card .icon {
+  font-size: 2rem;
+  color: #ffd700;
+  transition: transform 0.3s ease;
+}
+
+.work-card:hover .icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.work-card .card-title {
+  color: #ffdf00;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.work-card .card-text {
+  color: #fffacd;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
