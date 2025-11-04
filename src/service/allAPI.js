@@ -40,3 +40,19 @@ export const getAllMessagesAPI = async () => {
 export const deleteMessageAPI = async (id) => {
   return await commonAPI("DELETE", `${BASEURL}/messages/${id}`);
 };
+
+// Add new event
+export const addEventAPI = async (reqBody) => {
+  return await commonAPI("POST", `${BASEURL}/events`, reqBody);
+};
+
+// Delete event
+export const deleteEventAPI = async (id) => {
+  return await commonAPI("DELETE", `${BASEURL}/events/${id}`, {});
+};
+
+// Update an event
+export const updateEventAPI = async (id, reqBody) => {
+  return await commonAPI("PUT", `${BASEURL}/events/${id}`, reqBody);
+};
+
