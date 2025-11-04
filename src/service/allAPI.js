@@ -11,17 +11,32 @@ export const addBookingAPI = async (reqBody) => {
   return await commonAPI("POST", `${BASEURL}/bookings`, reqBody);
 };
 
-// Get all event bookings (for Admin Dashboard)
+// Get all event bookings 
 export const getAllBookingsAPI = async () => {
   return await commonAPI("GET", `${BASEURL}/bookings`, {});
 };
 
-// Update a booking (if needed later)
+// Update a booking 
 export const updateBookingAPI = async (id, reqBody) => {
   return await commonAPI("PUT", `${BASEURL}/bookings/${id}`, reqBody);
 };
 
-// Delete a booking (if needed later)
+// Delete a booking 
 export const deleteBookingAPI = async (id) => {
   return await commonAPI("DELETE", `${BASEURL}/bookings/${id}`, {});
+};
+
+
+//  Add new message
+export const addMessageAPI = async (reqBody) => {
+  return await commonAPI("POST", `${BASEURL}/messages`, reqBody);
+};
+
+//  Get all messages
+export const getAllMessagesAPI = async () => {
+  return await commonAPI("GET", `${BASEURL}/messages`, {});
+};
+
+export const deleteMessageAPI = async (id) => {
+  return await commonAPI("DELETE", `${BASEURL}/messages/${id}`);
 };
