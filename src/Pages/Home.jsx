@@ -17,13 +17,12 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Our Work Section */}
-     {/* Work Section */}
+ {/* ===== Our Works Section ===== */}
 <section id="work" className="work-section py-5 text-light text-center">
   <div className="container">
     <h2 className="fw-bold mb-3">Our Expertise</h2>
     <p className="subtitle mb-5">
-      Crafting unforgettable moments with creativity, precision, and heart.
+      We craft unforgettable experiences filled with style, elegance, and emotion.
     </p>
 
     <div className="row g-4">
@@ -33,7 +32,7 @@ const Home = () => {
             <div className="icon mb-3">💍</div>
             <h5 className="card-title">Weddings</h5>
             <p className="card-text">
-              From intimate vows to grand destinations — we design weddings filled with love, emotion, and elegance.
+              Turning vows into memories — with floral dreams, love lights, and unforgettable celebrations.
             </p>
           </div>
         </div>
@@ -45,7 +44,7 @@ const Home = () => {
             <div className="icon mb-3">🏢</div>
             <h5 className="card-title">Corporate Events</h5>
             <p className="card-text">
-              From brand launches to team galas, we blend sophistication and creativity to elevate your corporate story.
+              Classy, impactful, and tailored to your brand — from conferences to product launches.
             </p>
           </div>
         </div>
@@ -57,7 +56,7 @@ const Home = () => {
             <div className="icon mb-3">🎉</div>
             <h5 className="card-title">Social Gatherings</h5>
             <p className="card-text">
-              Elegant parties, milestone celebrations, and moments that leave hearts glowing — we make every event shine.
+              Parties and moments that shimmer with joy, laughter, and unforgettable decor.
             </p>
           </div>
         </div>
@@ -66,39 +65,42 @@ const Home = () => {
   </div>
 </section>
 
+{/* ===== Customer Reviews Section ===== */}
+<section id="reviews" className="reviews-section py-5 text-center text-dark">
+  <div className="container">
+    <h2 className="fw-bold mb-4">What Our Clients Say</h2>
+    <p className="review-subtitle mb-5">Real stories from our happy clients 💫</p>
 
-      {/* Customer Reviews Section */}
-      <section id="reviews" className="reviews-section py-5 text-center text-light">
-        <div className="container">
-          <h2 className="fw-bold mb-4">Customer Reviews</h2>
-          <div className="row g-4">
-            <div className="col-md-4">
-              <div className="review-card p-4 h-100">
-                <p className="review-text">
-                  “EventAra made our wedding a dream come true! Every detail was perfect — the decor, the planning, everything.”
-                </p>
-                <h6 className="mt-3">— Anjali & Rohit</h6>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="review-card p-4 h-100">
-                <p className="review-text">
-                  “Professional, creative, and caring. They handled our corporate event with such elegance and precision.”
-                </p>
-                <h6 className="mt-3">— Global Tech Pvt. Ltd.</h6>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="review-card p-4 h-100">
-                <p className="review-text">
-                  “Our anniversary celebration was absolutely magical. The EventAra team truly understands emotions.”
-                </p>
-                <h6 className="mt-3">— Meera & Arjun</h6>
-              </div>
-            </div>
-          </div>
+    <div className="row g-4">
+      <div className="col-md-4">
+        <div className="review-card p-4 h-100 shadow-sm">
+          <p className="review-text">
+            “EventAra made our wedding a fairytale! The décor and attention to detail were beyond perfect.”
+          </p>
+          <h6 className="mt-3 text-gold">— Anjali & Rohit</h6>
         </div>
-      </section>
+      </div>
+
+      <div className="col-md-4">
+        <div className="review-card p-4 h-100 shadow-sm">
+          <p className="review-text">
+            “Our corporate gala was executed flawlessly. Professional, elegant, and inspiring.”
+          </p>
+          <h6 className="mt-3 text-gold">— Global Tech Pvt. Ltd.</h6>
+        </div>
+      </div>
+
+      <div className="col-md-4">
+        <div className="review-card p-4 h-100 shadow-sm">
+          <p className="review-text">
+            “Our anniversary night was magical — EventAra truly knows how to make memories shine.”
+          </p>
+          <h6 className="mt-3 text-gold">— Meera & Arjun</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     </div>
   );
