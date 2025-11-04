@@ -1,6 +1,11 @@
 import commonAPI from "./commonAPI";
 import BASEURL from "./serverURL";
 
+// Get all events
+export const getAllEventsAPI = async () => {
+  return await commonAPI("GET", `${BASEURL}/events`, {});
+};
+
 // Add new event booking
 export const addBookingAPI = async (reqBody) => {
   return await commonAPI("POST", `${BASEURL}/bookings`, reqBody);
