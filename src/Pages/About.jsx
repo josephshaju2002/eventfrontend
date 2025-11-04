@@ -1,6 +1,8 @@
 import React from "react";
 
+
 function About() {
+
   return (
     <section
       className="text-white py-5"
@@ -56,9 +58,6 @@ function About() {
           </div>
         </div>
 
-        <div className="text-center mt-5">
-          
-        </div>
       </div>
     </section>
   );

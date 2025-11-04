@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { SiEventstore } from "react-icons/si";
-
+import Tooltip from "@mui/material/Tooltip";
 
 function Header() {
   return (
@@ -35,14 +35,19 @@ function Header() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/about" className="nav-link">
-                About Us
-              </NavLink>
+              <Tooltip title="Click to learn more about EventAra" arrow>
+                <NavLink to="/about" className="nav-link">
+                  About Us
+                </NavLink>
+              </Tooltip>
+
             </li>
             <li className="nav-item">
+               <Tooltip title="Click here to know more about our works" arrow>
               <NavLink to="/works" className="nav-link">
                 Works
               </NavLink>
+              </Tooltip>
             </li>
             <li className="nav-item">
               <NavLink to="/book-event" className="nav-link">
