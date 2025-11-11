@@ -1,4 +1,3 @@
-// Admin.jsx
 import React, { useState, useEffect } from "react";
 import {
   Box,
@@ -41,7 +40,6 @@ function Admin() {
   const [editEvent, setEditEvent] = useState(null);
   const [openEditModal, setOpenEditModal] = useState(false);
 
-  // --- Fetch helpers ---
   const getAllBookings = async () => {
     try {
       const result = await getAllBookingsAPI();
@@ -94,7 +92,7 @@ function Admin() {
     if (!isConfirmed) return;
 
     try {
-      const res = await deleteBookingAPI(id); // your pattern: confirming -> delete from pending list
+      const res = await deleteBookingAPI(id); 
       if (res?.status >= 200 && res?.status < 300) {
         Swal.fire("Confirmed!", "Booking has been confirmed.", "success");
         getAllBookings();
@@ -486,7 +484,6 @@ function Admin() {
                 />
               </Grid>
 
-              {/* ✅ Button inline with inputs */}
               <Grid item xs={12} sm={1} sx={{ textAlign: "right" }}>
                 <Button
                   variant="contained"

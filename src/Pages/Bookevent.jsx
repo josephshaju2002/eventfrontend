@@ -24,7 +24,6 @@ function BookEvent() {
     requirements: "",
   });
 
-  // ✅ Fetch events from JSON server
   useEffect(() => {
     const fetchEvents = async () => {
       try {
