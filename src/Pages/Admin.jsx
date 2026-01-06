@@ -73,7 +73,6 @@ function Admin() {
     }
   };
 
-  // Load relevant data when view changes
   useEffect(() => {
     if (view === "bookings") getAllBookings();
     else if (view === "messages") getAllMessages();
@@ -222,6 +221,15 @@ function Admin() {
   // ---------------- UI ----------------
   return (
     <Box sx={{ p: 4 }}>
+      <section className="hero-section text-center text-light d-flex flex-column justify-content-center align-items-center mt-5">
+         <div className="overlay"></div>
+        <div className="content">
+          <h1 className="display-4 fw-bold">Where Every Event Tells a Story</h1>
+          <p className="lead mt-3">
+            EventAra turns your dreams into breathtaking celebrations — elegant, emotional, and unforgettable.
+          </p>
+          </div>
+      </section>
       <Typography
         className="fw-bold"
         variant="h3"
