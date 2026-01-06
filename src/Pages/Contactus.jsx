@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Contact.css";
 import Swal from "sweetalert2";
 import { addMessageAPI } from "../service/allAPI";
 
@@ -37,57 +36,100 @@ const Contact = () => {
   };
 
   return (
-    <section className="contact-section mt-5">
-      <div className="contact-container">
-        <h2 className="title">Contact Us</h2>
-        <p className="subtitle">
+    <section
+      className="py-5 mt-5"
+      style={{
+        background: "linear-gradient(135deg, #fffaf3, #fdf6ee)",
+        fontFamily: "Poppins, sans-serif",
+      }}
+    >
+      <div
+        className="container bg-white p-5 rounded-4 shadow"
+        style={{ maxWidth: "1100px" }}
+      >
+        <h2 className="text-center fw-bold mb-2" style={{ color: "rgb(36,36,224)", fontSize: "36px" }}>
+          Contact Us
+        </h2>
+
+        <p className="text-center text-muted mb-5">
           We’d love to hear from you! Reach out for event bookings, partnerships, or any queries.
         </p>
 
-        <div className="contact-content">
-          {/* Contact Info Section */}
-          <div className="contact-info">
-            <h3>Get In Touch</h3>
-            <p><strong>Email:</strong> info@eventara.com</p>
-            <p><strong>Phone:</strong> +91 98765 43210</p>
-            <p><strong>Address:</strong> EventAra HQ, Kochi, Kerala</p>
+        <div className="row g-5">
+          {/* Contact Info */}
+          <div className="col-md-6">
+            <h4 className="mb-3" style={{ color: "#2e8b57" }}>
+              Get In Touch
+            </h4>
 
-            <div className="social-icons">
-              <a href="#"><i className="fa-brands fa-facebook"></i></a>
-              <a href="#"><i className="fa-brands fa-instagram"></i></a>
-              <a href="#"><i className="fa-brands fa-whatsapp"></i></a>
-              <a href="#"><i className="fa-brands fa-linkedin"></i></a>
+            <p className="mb-2 text-secondary">
+              <strong>Email:</strong> info@eventara.com
+            </p>
+            <p className="mb-2 text-secondary">
+              <strong>Phone:</strong> +91 98765 43210
+            </p>
+            <p className="mb-3 text-secondary">
+              <strong>Address:</strong> EventAra HQ, Kochi, Kerala
+            </p>
+
+            <div className="d-flex gap-3 fs-4">
+              <a href="#" className="text-decoration-none" style={{ color: "#c45a2b" }}>
+                <i className="fa-brands fa-facebook"></i>
+              </a>
+              <a href="#" className="text-decoration-none" style={{ color: "#c45a2b" }}>
+                <i className="fa-brands fa-instagram"></i>
+              </a>
+              <a href="#" className="text-decoration-none" style={{ color: "#c45a2b" }}>
+                <i className="fa-brands fa-whatsapp"></i>
+              </a>
+              <a href="#" className="text-decoration-none" style={{ color: "#c45a2b" }}>
+                <i className="fa-brands fa-linkedin"></i>
+              </a>
             </div>
           </div>
 
-          {/* Contact Form Section */}
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <textarea
-              name="message"
-              rows="5"
-              placeholder="Your Message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            ></textarea>
-            <button type="submit">Send Message</button>
-          </form>
+          {/* Contact Form */}
+          <div className="col-md-6">
+            <form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
+              <input
+                type="text"
+                name="name"
+                className="form-control form-control-lg rounded-3"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+
+              <input
+                type="email"
+                name="email"
+                className="form-control form-control-lg rounded-3"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+
+              <textarea
+                name="message"
+                rows="5"
+                className="form-control form-control-lg rounded-3"
+                placeholder="Your Message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+              ></textarea>
+
+              <button
+                type="submit"
+                className="btn btn-lg text-white rounded-3"
+                style={{ backgroundColor: "rgb(36,36,224)" }}
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
