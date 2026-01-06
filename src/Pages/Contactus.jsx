@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { addMessageAPI } from "../service/allAPI";
 
-const Contact = () => {
+const Contactus = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -136,4 +136,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contactus;
